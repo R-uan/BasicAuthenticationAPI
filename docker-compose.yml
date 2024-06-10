@@ -1,0 +1,14 @@
+services:
+    # Change the container name
+    basic-user-auth:
+        image: postgres:latest
+        container_name: user-auth-database
+        restart: unless-stopped
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_DB: database
+            POSTGRES_USER: user
+            POSTGRES_PASSWORD: password
+        volumes:
+            - ./data:/var/lib/user-auth/postgresql/data
